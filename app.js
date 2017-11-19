@@ -14,6 +14,13 @@ app.get('/customize_timeout', timeout('2s'), function (req, res) {
   });
 });
 
+app.get('/heavy_process', function (req, res) {
+  req.setTimeout(0);
+  sleep(600000).then(function() {
+    res.send('Hello World!');
+  });
+});
+
 app.listen(3333, function () {
   console.log('Example app listening on port 3333!');
 });
